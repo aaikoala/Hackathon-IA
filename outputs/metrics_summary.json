@@ -1,0 +1,82 @@
+{
+  "best_model": "Gradient Boosting",
+  "test_auc": 0.775887573964497,
+  "cv_auc_mean": 0.7918289917593053,
+  "cv_auc_std": 0.04576347229123255,
+  "all_models": {
+    "Logistic Regression": {
+      "auc": 0.7603550295857988,
+      "balanced_accuracy": 0.7211538461538463,
+      "cv_mean": 0.7468032741551904,
+      "cv_std": 0.0775107767461636
+    },
+    "Random Forest": {
+      "auc": 0.8136094674556213,
+      "balanced_accuracy": 0.75,
+      "cv_mean": 0.7788454731486091,
+      "cv_std": 0.07456155910603367
+    },
+    "Gradient Boosting": {
+      "auc": 0.775887573964497,
+      "balanced_accuracy": 0.7019230769230769,
+      "cv_mean": 0.7918289917593053,
+      "cv_std": 0.04576347229123255
+    }
+  },
+  "leakage_removed": [
+    "TermReason",
+    "EmploymentStatus",
+    "EmpStatusID",
+    "MarriedID",
+    "MaritalStatusID",
+    "GenderID",
+    "DeptID",
+    "PerfScoreID",
+    "PositionID",
+    "FromDiversityJobFairID",
+    "EmpStatusID"
+  ],
+  "features_used": [
+    "Salary",
+    "Position",
+    "State",
+    "Zip",
+    "MaritalDesc",
+    "CitizenDesc",
+    "Department",
+    "RecruitmentSource",
+    "PerformanceScore",
+    "EngagementSurvey",
+    "EmpSatisfaction",
+    "SpecialProjectsCount",
+    "DaysLateLast30",
+    "Absences",
+    "tenure_years",
+    "hire_month",
+    "seniority_band",
+    "age_at_hire",
+    "current_age"
+  ],
+  "top5_drivers": [
+    {
+      "feature": "Ancienneté (années)",
+      "importance": 1.3927690716548404
+    },
+    {
+      "feature": "Salaire annuel ($)",
+      "importance": 0.45333495943249674
+    },
+    {
+      "feature": "Salaire vs médiane dép.",
+      "importance": 0.308406528704359
+    },
+    {
+      "feature": "Retards sur 30 jours",
+      "importance": 0.29157250534288376
+    },
+    {
+      "feature": "Score assiduité (risque)",
+      "importance": 0.21598451646052708
+    }
+  ]
+}
