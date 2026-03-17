@@ -43,7 +43,6 @@ This is the core of the responsible AI approach.
 * **Explainability Trade-off:** Justification for selecting the **Decision Tree**. Although it has a slightly "Lower" AUC than the Random Forest, it boasts the "Lowest" compute/carbon cost and provides highly interpretable decision rules (e.g., "If salary < X and absences > Y, then high risk"). This white-box approach is mandatory for actionable HR insights.
 
 ## 6. How to Run the Code
-*(Add 2 or 3 simple instructions to run the notebook)*
 1. Clone the repository.
 2. Install dependencies: `pip install -r requirements.txt`.
 3. Run all cells in the `Hackathon_code.ipynb` notebook.
