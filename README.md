@@ -101,3 +101,29 @@ Everything is built in accordance with four responsible AI principles:
 1. Clone the Git repository
 2. Launch the notebook (Hackathon_code.ipnyb)
 3. Launch the dashboard (streamlit_app.py)
+
+## Deliverables
+
+### 1. Code
+* `Hackathon_code.ipynb`
+* `streamlit_app.py`
+
+### 2. Documents
+* `README.md`
+* `model-card.md`
+* `data-card.md`
+* `executive-summary.md`
+* `technical_documentation.md`
+* `presentation.pptx`
+* `architecture_hackathon.drawio.png`
+
+### 3. Data
+* `HRDataset_v14.csv`
+
+
+## Dependencies 
+
+Install the required dependencies:
+
+   ```bash
+   pip install -r requirements.txt
