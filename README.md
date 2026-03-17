@@ -99,5 +99,5 @@ Everything is built in accordance with four responsible AI principles:
 
 ## Instructions
 1. Clone the Git repository
-2. Launch the notebook
-3. Launch the dashboard located in the NLP folder
+2. Launch the notebook (Hackathon_code.ipnyb)
+3. Launch the dashboard (streamlit_app.py)
