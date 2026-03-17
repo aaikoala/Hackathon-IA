@@ -96,3 +96,5 @@ Everything is built in accordance with four responsible AI principles:
 ### AI Act
 - Classification: **High risk** (employment context).
 - Requirements met: human oversight, transparency, decision traceability, fairness audit.
+
+## Instructions
