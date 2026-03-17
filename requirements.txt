@@ -1,5 +1,4 @@
-pandas
-numpy 
+numpy
 matplotlib
 seaborn
 scikit-learn
@@ -8,4 +7,3 @@ lime
 codecarbon
 fairlearn
 imbalanced-learn
-ipywidgets
