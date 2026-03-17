@@ -1,4 +1,4 @@
-# 📄 Technical Documentation:  Predictive Model
+# Technical Documentation:  Predictive Model
 
 ## 1. Project Overview
 This project implements a Machine Learning pipeline aimed at predicting employee turnover risk at LuminaTech. It is designed around two major constraints: **strict compliance with GDPR and French Labor Law**, and the principles of **Frugal AI** (low carbon footprint, low compute cost, and high explainability).
