@@ -298,7 +298,7 @@ st.markdown("""
 with st.sidebar:
     st.markdown("## 🧭 Navigation")
     page = st.radio(
-        "", ["📊 Global Dashboard", "👤 Lookup by Employee ID", "🔍 Manual Analysis"],
+        "Navigation", ["📊 Global Dashboard", "👤 Lookup by Employee ID", "🔍 Manual Analysis"],
         label_visibility="collapsed",
     )
     st.divider()
