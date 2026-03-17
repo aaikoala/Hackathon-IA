@@ -1,35 +1,43 @@
-# Data Card: HR Attrition Dataset
+# Data Card: HR Dataset v14.5
+
+**Source:** Kaggle — Rich Huebner Human Resources Data Set  
+**Note:** Fictional dataset — no real individuals.
+
+---
 
 ## 1. Dataset Overview
-- **Name:** HRDataset_v14
-- **Description:** A structured Human Resources dataset containing employee records, performance reviews, and demographic information.
-- **Primary Use Case:** Binary classification of employee attrition (`Termd` = 0 or 1).
-- **Size:** 311 rows (employees) × 36 initial columns.
+- **Rows:** ~300 employees (historical and current)
+- **Columns (raw):** 36
+- **Target Variable:** `Termd` (Binary classification: `1` = terminated/resigned, `0` = active)
 
-## 2. Provenance & Collection
-- **Source:** The original dataset is *HRDataset_v14*, a widely used synthetic HR dataset created by Dr. Rich Huebner for educational purposes.
+## 2. Features Used in Model
+**Numeric Features:**
+- `Salary`, `Age`, `EngagementSurvey`, `EmpSatisfaction`, `SpecialProjectsCount`, `DaysLateLast30`, `Absences`, `PerfScoreID`
 
-## 3. Composition & Key Variables
-- **Target Variable:** `Termd` (Integer) 
-  - `0`: Active employee.
-  - `1`: Terminated or resigned employee.
-- **Key Predictive Features:**
-  - `EngagementSurvey`: Employee engagement score (1.0 to 5.0).
-  - `EmpSatisfaction`: Job satisfaction level (1 to 5).
-  - `Salary`: Annual salary in USD.
-  - `Absences`: Number of absent days.
-  - `SpecialProjectsCount`: Number of special projects the employee is involved in.
+**Categorical Features:**
+- `Department`, `Position`, `State`, `RecruitmentSource`, `PerformanceScore`, `MaritalDesc`, `CitizenDesc`
 
-## 4. Data Privacy & GDPR Compliance
-To adhere to data minimization and privacy-by-design principles, the following transformations are applied before any model training:
-- **Direct Identifiers Removed:** `Employee_Name`, `DOB` (Date of Birth), `Zip`, `State`, and `ManagerName` are hard-dropped.
-- **Pseudonymisation:** The original `EmpID` is masked or replaced with a standard format (`EMP_XXXX`).
+## 3. Sensitive Attributes (Fairness Audit Only)
+*These features are strictly excluded from model inputs to prevent algorithmic bias, and are only used post-prediction for fairness evaluation.*
+- **Sex (M/F):** Used for demographic parity audit.
+- **RaceDesc (Ethnicity):** Used for equalized odds audit.
+- **HispanicLatino (Yes/No):** Audit attribute.
 
-## 5. Sensitive Data & Fairness
-The dataset contains protected demographic attributes. To comply with ethical guidelines and French Labor Law (Art. L1132-1):
-- **Excluded from Model:** `Sex`, `RaceDesc`, `HispanicLatino`, `CitizenDesc`, and `MaritalDesc` are **strictly excluded** from the feature set. The model cannot use these to make predictions.
+## 4. Preprocessing Pipeline
+1. **PII Removal:** `Employee_Name`, `SSN`, `DOB`, `EmpID`, and `ManagerName` are hard-dropped.
+2. **Leakage Prevention:** Target-leaking variables such as `TermReason` and `DateofTermination` are strictly excluded.
+3. **Missing Values:** Addressed via median imputation for numeric features.
+4. **Encoding:** `LabelEncoder` applied to categorical features with cardinality <= 20.
+5. **Train/Test Split:** 80/20 ratio, stratified on the target variable (`Termd`).
+6. **Scaling:** `StandardScaler` applied exclusively for the Logistic Regression model (fitted only on the training set to prevent data leakage).
 
-## 6. Known Limitations
-- **Size:** With only 311 records, the dataset is relatively small, which can lead to overfitting if complex models are used (hence the choice of frugal models like Decision Trees or Gradient Boosting).
-- **Class Imbalance:** The dataset is imbalanced (approximately 1/3 turnover rate). Metrics like Accuracy are less reliable than AUC-ROC or F1-Score for evaluating model performance.
-- **Synthetic Nature:** As the data is synthetic, some correlations might be overly clean compared to noisy, real-world HR data.
+## 5. GDPR Compliance & Privacy
+- **Legal Basis:** Processed under Legitimate Interest (Art. 6(1)(f)).
+- **Special Categories:** Attributes like `Sex` and `RaceDesc` are processed under Art. 9 exceptions solely for the purpose of algorithmic bias auditing.
+- **Data Retention:** Only fully anonymised and pseudonymised data is stored in the pipeline.
+- **Data Subject Rights:** The Right to Erasure applies to the original source records prior to anonymisation.
+
+## 6. Data Quality & Limitations
+- **Synthetic Data:** The dataset is illustrative and does not represent a real workforce; some correlations may be artificial.
+- **Class Imbalance:** The termination rate is approximately 33%. This imbalance is actively handled during modeling (e.g., via `class_weight` parameters).
+- **Granularity:** The `Salary` band is broad; highly granular pay data is unavailable for fine-tuning.
