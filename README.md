@@ -114,7 +114,7 @@ Everything is built in accordance with four responsible AI principles:
 * `data-card.md`
 * `executive-summary.md`
 * `technical_documentation.md`
-* `presentation.pptx`
+* `presentation.pdf`
 * `architecture_hackathon.drawio.png`
 
 ### 3. Data
